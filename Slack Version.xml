@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Slack Version</displayName>
+<description>Shows whether the installed version of Slack is up to date or not current.</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh
+
+APP_VERSION_KEY="CFBundleShortVersionString"
+
+currentSlackVersion=$(/usr/bin/curl -s 'https://downloads.slack-edge.com/mac_releases/releases.json' | grep -o "[0-9]\.[0-9]\.[0-9]" | tail -1)
+
+localSlackVersion=$(defaults read /Applications/Slack.app/Contents/Info.plist "CFBundleShortVersionString")
+
+
+if [[ "${currentSlackVersion}" = "${localSlackVersion}" ]]; then
+    result="Updated $localSlackVersion"
+else 
+    result="Not current"
+fi
+
+
+echo "&lt;result&gt;"$result"&lt;/result&gt;"</scriptContentsMac>
+</extensionAttribute>

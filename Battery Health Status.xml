@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Battery Health Status</displayName>
+<description>This attribute returns the health of the battery, if installed.  In the event of battery failure, the attribute will report back "Failure".  This attribute applies to both Mac and Windows.</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh&#13;
+&#13;
+result=`ioreg -r -c "AppleSmartBattery" | grep "PermanentFailureStatus" | awk '{print $3}' | sed s/\"//g`&#13;
+&#13;
+if [ "$result" == "1" ]; then&#13;
+result="Failure"&#13;
+elif [ "$result" == "0" ]; then&#13;
+result="OK"&#13;
+fi&#13;
+&#13;
+echo "&lt;result&gt;$result&lt;/result&gt;"&#13;
+	</scriptContentsMac>
+</extensionAttribute>

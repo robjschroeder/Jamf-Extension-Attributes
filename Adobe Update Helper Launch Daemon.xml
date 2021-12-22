@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Adobe Update Helper Launch Daemon</displayName>
+<description>This will look for the launch agent. </description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh&#13;
+if [ -e /Library/LaunchAgents/com.adobe.ARMDCHelper* ]&#13;
+then &#13;
+  echo "&lt;result&gt;True&lt;/result&gt;"&#13;
+else&#13;
+  echo "&lt;result&gt;False&lt;/result&gt;"&#13;
+fi</scriptContentsMac>
+</extensionAttribute>

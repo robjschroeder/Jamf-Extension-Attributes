@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Outlook Profile</displayName>
+<description/>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh&#13;
+&#13;
+#EA to record office profile deployment ready&#13;
+result="no"&#13;
+&#13;
+if [ -f /Library/Management/receipts/deploy-office-profile ]; then&#13;
+result=yes&#13;
+fi&#13;
+&#13;
+echo "&lt;result&gt;$result&lt;/result&gt;"</scriptContentsMac>
+</extensionAttribute>

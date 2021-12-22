@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Jamf Protect Status</displayName>
+<description>This Jamf Pro Extension Attribute which checks and validates the following:&#13;
+&#13;
+Jamf Protect is installed&#13;
+The Jamf Protect processes are running.&#13;
+If Jamf Protect is installed and running properly:&#13;
+&#13;
+/Library/Application Support/JamfProtect/JamfProtect.app will be executable. Running the following command will return one or more results:&#13;
+&#13;
+pgrep JamfProtect&#13;
+&#13;
+If Jamf Protect is installed and the processes are running, the following message is displayed:&#13;
+&#13;
+1&#13;
+&#13;
+Otherwise, the following result is returned:&#13;
+&#13;
+0</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/bash&#13;
+&#13;
+# Jamf Pro Extension Attribute which checks and validates the following:&#13;
+#&#13;
+# 1. Jamf Protect is installed&#13;
+# 2. The Jamf Protect processes are running.&#13;
+#&#13;
+# If Jamf Protect is installed and running properly:&#13;
+#&#13;
+# /Library/Application Support/JamfProtect/JamfProtect.app will be executable.&#13;
+# Running the following command will return one or more results:&#13;
+#&#13;
+# pgrep JamfProtect&#13;
+#&#13;
+# If Jamf Protect is installed and the processes are running, &#13;
+# the following message is displayed:&#13;
+#&#13;
+# 1&#13;
+#&#13;
+# Otherwise, the following result is returned:&#13;
+#&#13;
+# 0&#13;
+&#13;
+JamfProtectInstallPath="/Library/Application Support/JamfProtect/JamfProtect.app"&#13;
+isRunning=0&#13;
+&#13;
+# If the Jamf Protect app is detected and executable,&#13;
+# next check for the Jamf Protect processes.&#13;
+&#13;
+if [[ -x "$JamfProtectInstallPath" ]]; then&#13;
+&#13;
+	# check for Jamf Protect process&#13;
+	JPProcess=$( pgrep JamfProtect )&#13;
+&#13;
+	if [[ -n "$JPProcess" ]]; then&#13;
+		isRunning=1&#13;
+	fi&#13;
+fi&#13;
+&#13;
+echo "&lt;result&gt;$isRunning&lt;/result&gt;"&#13;
+&#13;
+exit 0</scriptContentsMac>
+</extensionAttribute>

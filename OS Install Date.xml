@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>OS Install Date</displayName>
+<description/>
+<dataType>date</dataType>
+<scriptContentsMac>#!/bin/bash&#13;
+&#13;
+# determine the inode birth date for / then convert seconds to "WeekdayName MonthName DD YYYY" format&#13;
+&#13;
+#eval $(/usr/bin/stat -s /)&#13;
+#result=$(/bin/date -j -f "%s" "$st_birthtime" "+%a %b %d %Y")&#13;
+#echo "&lt;result&gt;$result&lt;/result&gt;"&#13;
+&#13;
+# /usr/bin/find / -maxdepth 1 -inum 2 -exec stat -f %B {} \;&#13;
+# result=$(/bin/date -j -f "%s" "$st_birthtime" "+%Y%m%d")&#13;
+&#13;
+&#13;
+result=$(head -1 /var/log/install.log | awk -F " " '{print $1, $2}')&#13;
+echo "&lt;result&gt;$result&lt;/result&gt;"</scriptContentsMac>
+</extensionAttribute>

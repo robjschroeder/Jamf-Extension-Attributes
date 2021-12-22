@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Jamf Protect Server</displayName>
+<description>This Jamf Pro Extension Attribute checks to see if Jamf Protect's protectctl tool is installed. If the protectctl tool is installed, check for the Jamf Protect tenant name.&#13;
+&#13;
+If Jamf Protect's protectctl tool is installed:&#13;
+&#13;
+Output similar to that shown below will be returned:&#13;
+&#13;
+jamf_protect_server_name_here.protect&#13;
+&#13;
+Otherwise, the following result is returned:&#13;
+&#13;
+NA</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/bash&#13;
+&#13;
+# Jamf Pro Extension Attribute which checks to see if Jamf Protect's protectctl&#13;
+# tool is installed. If protectctl tool is installed, check for Jamf Protect&#13;
+# tenant name.&#13;
+#&#13;
+# If Jamf Protect's protectctl tool is installed:&#13;
+#&#13;
+# Output similar to that shown below will be returned:&#13;
+#&#13;
+# jamf_protect_server_name_here.protect&#13;
+#&#13;
+# Otherwise, the following result is returned:&#13;
+#&#13;
+# NA&#13;
+&#13;
+if [[ -x /usr/local/bin/protectctl ]]; then&#13;
+  JAMF_PROTECT_SERVER=$(protectctl info | head -1 | awk '{print $2}')&#13;
+  echo "&lt;result&gt;$JAMF_PROTECT_SERVER&lt;/result&gt;"&#13;
+else&#13;
+  echo "&lt;result&gt;NA&lt;/result&gt;"&#13;
+fi&#13;
+&#13;
+exit 0</scriptContentsMac>
+</extensionAttribute>

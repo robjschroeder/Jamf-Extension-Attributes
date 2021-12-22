@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Last Reboot</displayName>
+<description>Shows the last reboot time</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/bash&#13;
+LastStart=$(echo $(echo $(last reboot | head -1)) | awk '{print $3" "$4" "$5" "$6}')&#13;
+echo “&lt;result&gt;$LastStart&lt;/result&gt;”</scriptContentsMac>
+</extensionAttribute>

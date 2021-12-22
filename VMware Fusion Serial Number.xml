@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>VMware Fusion Serial Number</displayName>
+<description>This attribute returns the serial numbers present on the machine for VMware Fusion.</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh
+
+if [ -d "/Library/Application Support/VMware Fusion/" ]; then
+ result=`cat /Library/Application\ Support/VMware\ Fusion/license* | grep Serial | awk '{print $3}' | sed 's/"//g'`
+fi
+
+echo "&lt;result&gt;$result&lt;/result&gt;"</scriptContentsMac>
+</extensionAttribute>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Jamf Protect - Plan ID</displayName>
+<description>Displays the Plan ID specified by Jamf Protect</description>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/sh&#13;
+&#13;
+#Jamf Protect Location&#13;
+jamfProtectBinaryLocation="/usr/local/bin/protectctl"&#13;
+&#13;
+if [ -f "$jamfProtectBinaryLocation" ]; then&#13;
+    jamfProtectPlanID=$("$jamfProtectBinaryLocation" info | sed -n '1 p' |  awk -F 'Plan ID: ' '{print $2}' | xargs)&#13;
+else&#13;
+	jamfProtectPlanID="Does not exist"&#13;
+fi&#13;
+&#13;
+echo "jamfProtectPlanID"&#13;
+echo "&lt;result&gt;$jamfProtectPlanID&lt;/result&gt;"</scriptContentsMac>
+</extensionAttribute>
