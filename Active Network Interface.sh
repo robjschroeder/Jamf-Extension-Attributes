@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Active Network Interface</displayName>
-<description/>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/bash
+#!/bin/bash
 ref=$(/usr/bin/sw_vers -productVersion | awk '{print substr($1,4,2)}')
 case $ref in
 [0-4] ) ntwkset="/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Support/networksetup -listnetworkserviceorder"
@@ -20,10 +16,9 @@ END              { if(print_it) print buffer }
 '
 
 ntwkint=($(ifconfig -u | awk "$ifconfigoutput" | awk '/flags/{print substr($1,1,3)}'))
-/bin/echo -n $"&lt;result&gt;"
+/bin/echo -n $"<result>"
 for x in "${ntwkint[@]}"
 do
 	echo `$ntwkset | grep "$x" | sed -e 's/[)(]//g;s/,//g;s/.*Port: //g;s/Device:\ //g'`
 done
-echo "&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
+echo "</result>"

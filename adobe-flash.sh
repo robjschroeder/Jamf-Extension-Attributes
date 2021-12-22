@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>adobe-flash</displayName>
-<description>Extension Attribute provided by JAMF Nation patch service</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/usr/bin/env bash
+#!/usr/bin/env bash
 ##############################################################################
 # A script to collect the version of Adobe Flash Player currently installed. #
 # If flash is not installed "Not Installed" will return back                 #
@@ -13,5 +9,4 @@ RESULT="Not Installed"
 if [ -f "/Library/Internet Plug-Ins/Flash Player.plugin/Contents/version.plist" ] ; then
   RESULT=$( /usr/bin/defaults read "/Library/Internet Plug-Ins/Flash Player.plugin/Contents/version.plist" CFBundleVersion )
 fi
-/bin/echo "&lt;result&gt;$RESULT&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
+/bin/echo "<result>$RESULT</result>"
