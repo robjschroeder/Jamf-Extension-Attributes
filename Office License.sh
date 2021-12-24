@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Office License</displayName>
-<description>Reports Office license in use.</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/sh
+#!/bin/sh
 
 # Constants
 PERPETUALLICENSE="/Library/Preferences/com.microsoft.office.licensingV2.plist"
@@ -60,7 +56,7 @@ function PerpetualLicenseType {
 
 # Creates a list of local usernames with UIDs above 500 (not hidden)
 function DetectO365License {
-	userList=$( /usr/bin/dscl /Local/Default -list /Users uid | /usr/bin/awk '$2 &gt;= 501 { print $1 }' )
+	userList=$( /usr/bin/dscl /Local/Default -list /Users uid | /usr/bin/awk '$2 >= 501 { print $1 }' )
 	
 	while IFS= read aUser
 	do
@@ -76,7 +72,7 @@ function DetectO365License {
 		if [[ -f "$O365SUBMAIN" || -f "$O365SUBBAK1" || -f "$O365SUBBAK2" ]]; then
 			activations=$((activations+1))
 		fi
-	done &lt;&lt;&lt; "$userList"
+	done <<< "$userList"
 	
 	# Returns the number of activations to O365ACTIVATIONS
 	/bin/echo $activations
@@ -87,19 +83,18 @@ function DetectO365License {
 PERPETUALPRESENT=$(DetectPerpetualLicense)
 O365ACTIVATIONS=$(DetectO365License)
 
-if [ "$PERPETUALPRESENT" == "Yes" ] &amp;&amp; [ "$O365ACTIVATIONS" ]; then
-	/bin/echo "&lt;result&gt;Volume and Office 365 licenses detected. Only the volume license will be used.&lt;/result&gt;"
+if [ "$PERPETUALPRESENT" == "Yes" ] && [ "$O365ACTIVATIONS" ]; then
+	/bin/echo "<result>Volume and Office 365 licenses detected. Only the volume license will be used.</result>"
 
 elif [ "$PERPETUALPRESENT" == "Yes" ]; then
 	LICTYPE=$(PerpetualLicenseType)
-	/bin/echo "&lt;result&gt;$LICTYPE&lt;/result&gt;"
+	/bin/echo "<result>$LICTYPE</result>"
 	
 elif [ "$O365ACTIVATIONS" ]; then
-	/bin/echo "&lt;result&gt;Office 365 activations: $O365ACTIVATIONS&lt;/result&gt;"
+	/bin/echo "<result>Office 365 activations: $O365ACTIVATIONS</result>"
 	
-elif [ "$PERPETUALPRESENT" == "No" ] &amp;&amp; [ ! "$O365ACTIVATIONS" ]; then
-	/bin/echo "&lt;result&gt;No license&lt;/result&gt;"
+elif [ "$PERPETUALPRESENT" == "No" ] && [ ! "$O365ACTIVATIONS" ]; then
+	/bin/echo "<result>No license</result>"
 fi
 
-exit 0</scriptContentsMac>
-</extensionAttribute>
+exit 0

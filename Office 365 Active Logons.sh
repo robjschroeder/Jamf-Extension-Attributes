@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Office 365 Active Logons</displayName>
-<description/>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/sh
+#!/bin/sh
 
 # Functions
 function DetectO365Logon {
 	# creates a list of local usernames with UIDs above 500 (not hidden)
-	userList=$( /usr/bin/dscl /Local/Default -list /Users uid | /usr/bin/awk '$2 &gt;= 501 { print $1 }' )
+	userList=$( /usr/bin/dscl /Local/Default -list /Users uid | /usr/bin/awk '$2 >= 501 { print $1 }' )
 	
 	while IFS= read aUser
 	do
@@ -21,7 +17,7 @@ function DetectO365Logon {
 		if [ "$RESULT" != "" ]; then
 			logons+="$RESULT;"
 		fi
-	done &lt;&lt;&lt; "$userList"
+	done <<< "$userList"
 	
 	/bin/echo "$logons"
 }
@@ -29,10 +25,9 @@ function DetectO365Logon {
 ## Main
 O365LOGONS=$(DetectO365Logon)
 if [ "$O365LOGONS" != "" ]; then
-	/bin/echo "&lt;result&gt;$O365LOGONS&lt;/result&gt;"
+	/bin/echo "<result>$O365LOGONS</result>"
 else
-	/bin/echo "&lt;result&gt;None detected&lt;/result&gt;"
+	/bin/echo "<result>None detected</result>"
 fi
 
-exit 0</scriptContentsMac>
-</extensionAttribute>
+exit 0

@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Office DeviceID</displayName>
-<description/>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/sh
+#!/bin/sh
 
 # Functions
 function GetDeviceID {
 	# creates a list of local usernames with UIDs above 500 (not hidden)
-	userList=$( /usr/bin/dscl /Local/Default -list /Users uid | /usr/bin/awk '$2 &gt;= 501 { print $1 }' )
+	userList=$( /usr/bin/dscl /Local/Default -list /Users uid | /usr/bin/awk '$2 >= 501 { print $1 }' )
 	
 	while IFS= read aUser
 	do
@@ -21,7 +17,7 @@ function GetDeviceID {
 		if [ "$RESULT" != "" ]; then
 			ID="$RESULT"
 		fi
-	done &lt;&lt;&lt; "$userList"
+	done <<< "$userList"
 	
 	/bin/echo "$ID"
 }
@@ -29,10 +25,9 @@ function GetDeviceID {
 ## Main
 DEVICEID=$(GetDeviceID)
 if [ "$DEVICEID" != "" ]; then
-	/bin/echo "&lt;result&gt;$DEVICEID&lt;/result&gt;"
+	/bin/echo "<result>$DEVICEID</result>"
 else
-	/bin/echo "&lt;result&gt;Not detected&lt;/result&gt;"
+	/bin/echo "<result>Not detected</result>"
 fi
 
-exit 0</scriptContentsMac>
-</extensionAttribute>
+exit 0
