@@ -1,19 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Jamf Protect - Last Insights Check-in</displayName>
-<description>Displays the date and time of the last Insights check-in for Jamf Protect</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/sh&#13;
-&#13;
-#Jamf Protect Location&#13;
-jamfProtectBinaryLocation="/usr/local/bin/protectctl"&#13;
-&#13;
-if [ -f "$jamfProtectBinaryLocation" ]; then&#13;
-    jamfProtectInfoInsightsSync=$("$jamfProtectBinaryLocation" info | sed -n '5 p' |  awk -F 'Last Insights:' '{print $2}' | xargs)&#13;
-else&#13;
-	jamfProtectInfoInsightsSync="Does not exist"&#13;
-fi&#13;
-&#13;
-echo "jamfProtectInfoInsightsSync"&#13;
-echo "&lt;result&gt;$jamfProtectInfoInsightsSync&lt;/result&gt;"&#13;
-</scriptContentsMac>
-</extensionAttribute>
+#!/bin/sh
+
+#Jamf Protect Location
+jamfProtectBinaryLocation="/usr/local/bin/protectctl"
+
+if [ -f "$jamfProtectBinaryLocation" ]; then
+    jamfProtectInfoInsightsSync=$("$jamfProtectBinaryLocation" info | sed -n '5 p' |  awk -F 'Last Insights:' '{print $2}' | xargs)
+else
+	jamfProtectInfoInsightsSync="Does not exist"
+fi
+
+echo "jamfProtectInfoInsightsSync"
+echo "<result>$jamfProtectInfoInsightsSync</result>"

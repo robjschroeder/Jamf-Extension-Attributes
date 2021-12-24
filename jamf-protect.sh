@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>jamf-protect</displayName>
-<description>Extension Attribute provided by JAMF Nation patch service</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/bash
+#!/bin/bash
 ##############################################################################
 # A script to collect the version of Jamf Protect installed.                 #
 # If Jamf Protect is not installed "Not Installed" will return back   	     #
@@ -17,5 +13,4 @@ if [ -a /Library/Application\ Support/JamfProtect/JamfProtect.app/Contents/Info.
 else
     RESULT="$NOT_INSTALLED"
 fi
-/bin/echo "&lt;result&gt;$RESULT&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
+/bin/echo "<result>$RESULT</result>"
