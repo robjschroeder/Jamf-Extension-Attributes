@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>java-8-runtime</displayName>
-<description>Extension Attribute provided by JAMF Nation patch service</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/usr/bin/env bash
+#!/usr/bin/env bash
 #######################################################################################
 # Collects information to determine which version of the Java plugin is installed and # 
 # then returning that version back if major version (1.X) match what we're searching  # 
@@ -26,5 +22,4 @@ else
 	RESULT="$NOT_INSTALLED"
 fi
 
-/bin/echo "&lt;result&gt;$RESULT&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
+/bin/echo "<result>$RESULT</result>"
