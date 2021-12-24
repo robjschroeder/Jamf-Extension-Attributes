@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>VMware - Virtual Machine List</displayName>
-<description>This attribute displays a list of VMware virtual machines that are installed on the machine.</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/sh
+#!/bin/sh
 
 OS=`/usr/bin/sw_vers -productVersion | /usr/bin/colrm 5`
 
-if [[ "$OS" &lt; "10.6" ]]; then
+if [[ "$OS" < "10.6" ]]; then
 myVMList=`find /Users -name "*.vmx"`
 else
 myVMList=`mdfind -name ".vmx" | grep -Ev "vmx.lck" | grep -Ev "vmxf"`
@@ -14,7 +10,7 @@ fi
 
 IFS=$'\n'
 myCount=1
-echo "&lt;result&gt;"
+echo "<result>"
 for myFile in $myVMList
 do
 myNetwork=`cat "$myFile"| grep "ethernet.*.connectionType"| awk '{print \$3}'| sed 's/\"//g'`
@@ -34,7 +30,6 @@ echo "UUID: $myUUID"
 	
 let myCount=myCount+1
 done
-echo "&lt;/result&gt;"
+echo "</result>"
 
-unset IFS</scriptContentsMac>
-</extensionAttribute>
+unset IFS

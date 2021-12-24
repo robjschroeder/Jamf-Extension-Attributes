@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Slack Version</displayName>
-<description>Shows whether the installed version of Slack is up to date or not current.</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/sh
+#!/bin/sh
 
 APP_VERSION_KEY="CFBundleShortVersionString"
 
@@ -18,5 +14,4 @@ else
 fi
 
 
-echo "&lt;result&gt;"$result"&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
+echo "<result>"$result"</result>"

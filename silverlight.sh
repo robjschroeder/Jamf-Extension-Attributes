@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>silverlight</displayName>
-<description>Extension Attribute provided by JAMF Nation patch service</description>
-<dataType>string</dataType>
-<scriptContentsMac>#!/usr/bin/env bash
+#!/usr/bin/env bash
 ##############################################################################
 # A script to collect the version of Silverlight currently installed.        #
 # If Silverlight is not installed "Not Installed" will return back           #
@@ -13,5 +9,4 @@ if [ -f "/Library/Internet Plug-Ins/Silverlight.plugin/Contents/Info.plist" ] ; 
 RESULT=$( /usr/bin/defaults read "/Library/Internet Plug-Ins/Silverlight.plugin/Contents/Info.plist" CFBundleVersion )
 fi
 
-/bin/echo "&lt;result&gt;$RESULT&lt;/result&gt;"</scriptContentsMac>
-</extensionAttribute>
+/bin/echo "<result>$RESULT</result>"

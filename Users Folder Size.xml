@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
-<displayName>Users Folder Size</displayName>
-<description/>
-<dataType>string</dataType>
-<scriptContentsMac>#!/bin/bash&#13;
-    usersize=$( du -h -d 0 /Users | awk '{print $1}' )&#13;
-    echo "&lt;result&gt;$usersize&lt;/result&gt;"&#13;
-exit 0</scriptContentsMac>
-</extensionAttribute>
