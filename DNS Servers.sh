@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Reports current DNS Server on macOS
+
 OS=`/usr/bin/sw_vers -productVersion | /usr/bin/colrm 5`
 if [[ "$OS" < "10.5" ]]; then
 if [ -f /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Support/networksetup ];then		

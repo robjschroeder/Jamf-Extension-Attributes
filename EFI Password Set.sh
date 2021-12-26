@@ -1,5 +1,6 @@
-!/bin/sh
-####
+#!/bin/sh
+
+# Reports if EFI Password is currently set on computer
 
 firmwarePass="$(firmwarepasswd -check)";
 

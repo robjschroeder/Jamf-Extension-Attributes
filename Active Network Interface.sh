@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Reports the active network interface for the macOS Computer 
+
 ref=$(/usr/bin/sw_vers -productVersion | awk '{print substr($1,4,2)}')
 case $ref in
 [0-4] ) ntwkset="/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Support/networksetup -listnetworkserviceorder"

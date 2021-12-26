@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Report the current version of Apple Remote Desktop
+
 ARD_VERS=$(/usr/bin/defaults read /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/version.plist CFBundleVersion)
 
 if [[ -f /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/version.plist ]]; then

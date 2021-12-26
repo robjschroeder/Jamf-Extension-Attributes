@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# Reports current firewall status
+
 OS=`/usr/bin/sw_vers -productVersion | /usr/bin/colrm 5`
 if [[ "$OS" < "10.5" ]]; then		
 result=`/usr/bin/defaults read /Library/Preferences/com.apple.sharing.firewall state`
