@@ -1,5 +1,7 @@
 #!/bin/sh
 
+## Displays the date and time of the last agent check-in for Jamf Protect ##
+
 #Jamf Protect Location
 jamfProtectBinaryLocation="/usr/local/bin/protectctl"
 
