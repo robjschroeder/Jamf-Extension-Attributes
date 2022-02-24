@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Report the current version of Apple Remote Desktop
+# Returns the version of ARD
+#
+# Updated: 2.23.2022 @ Robjschroeder
+#
 
 ARD_VERS=$(/usr/bin/defaults read /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/version.plist CFBundleVersion)
 
