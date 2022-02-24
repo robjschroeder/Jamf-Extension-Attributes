@@ -1,4 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+
+# Return the value set in Text1 field 
+# of the Remote Desktop plist
+#
+# Updated: 2.23.2022 @ Robjschroeder
+#
 
 # Reports the value stored in Apple Remote Desktop Field 4
 
