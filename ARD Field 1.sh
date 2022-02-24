@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# This script will return the value
-# set in Text1 field of the Remote
-# Desktop plist
+# Return the value set in Text1 field 
+# of the Remote Desktop plist
 #
 # Updated: 2.23.2022 @ Robjschroeder
 #
