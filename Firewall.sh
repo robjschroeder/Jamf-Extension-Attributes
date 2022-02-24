@@ -1,6 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-# Reports current firewall status
+# Reports the status of the Firewall
+# Reads com.apple.sharing.firewall for older macOS
+# Reads com.apple.alf for newer macOS
+#
+# Possible globalstate values:
+# 0 = Off
+# 1 = On for specific services
+# 2 = On for essential services
+#
+# Updated: 2.23.2022 @ Robjschroeder
+#
 
 OS=$(/usr/bin/sw_vers -productVersion | /usr/bin/colrm 5)
 if [[ "${OS}" < "10.5" ]]; then		
