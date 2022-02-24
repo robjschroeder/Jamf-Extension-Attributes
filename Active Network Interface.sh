@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# Reports the active network interface for the macOS Computer 
+# Reports the active network interface
+# for the macOS Computer
+#
+# Updated: 2.23.2022 @ Robjschroeder
+#
 
 ref=$(/usr/bin/sw_vers -productVersion | awk '{print substr($1,4,2)}')
 case $ref in
