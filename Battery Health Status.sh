@@ -1,11 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
-result=`ioreg -r -c "AppleSmartBattery" | grep "PermanentFailureStatus" | awk '{print $3}' | sed s/\"//g`
+# Reports the Permanent Failure Status
+# of Mac battery. 
+#
+# Updated: 2.23.2022 @ Robjschroeder
+#
 
-if [ "$result" == "1" ]; then
+result=$(ioreg -r -c "AppleSmartBattery" | grep "PermanentFailureStatus" | awk '{print $3}' | sed s/\"//g)
+
+if [ "${result}" == "1" ]; then
 result="Failure"
-elif [ "$result" == "0" ]; then
+elif [ "${result}" == "0" ]; then
 result="OK"
 fi
 
-echo "<result>$result</result>"
+echo "<result>${result}</result>"
