@@ -15,3 +15,5 @@ result="OK"
 fi
 
 echo "<result>${result}</result>"
+
+exit 0
