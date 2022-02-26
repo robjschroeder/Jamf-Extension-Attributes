@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+### Do not use on Monterey ###
+### 2.26.22 @robjschroeder ###
+
 """
 Jamf Pro extension attribute to return a list of ignored softwareupdates added
 by using something like `softwareupdate --ignore "Security Update 2019-001"
