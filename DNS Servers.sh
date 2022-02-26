@@ -1,4 +1,6 @@
 #!/bin/sh
+### Currently not working ###
+### 2.26.2022 ###
 
 # Reports current DNS Server on macOS
 
