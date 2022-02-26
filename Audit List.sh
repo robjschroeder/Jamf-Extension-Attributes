@@ -1,6 +1,6 @@
-#!/bin/bash&#13;
-&#13;
-# Security Reporting - List Risks&#13;
-&#13;
-auditfile=/Library/Application\ Support/SecurityScoring/org_audit&#13;
+#!/bin/bash
+
+# Security Reporting - List Risks
+
+auditfile=/Library/Application\ Support/SecurityScoring/org_audit
 echo "<result>$(cat "$auditfile")</result>"
