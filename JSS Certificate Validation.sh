@@ -1,4 +1,8 @@
 #!/bin/sh
+
+## TODO: Need to test this EA, it's an oldie ##
+## 2.26.22 @robjschroeder ##
+
 if [ -f "/Library/Preferences/com.jamfsoftware.jamf.plist" ]; then
 validurl=`defaults read /Library/Preferences/com.jamfsoftware.jamf jss_url | grep https://`
 	if [[ $validurl = "" ]]; then
