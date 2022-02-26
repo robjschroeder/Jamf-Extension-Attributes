@@ -4,7 +4,7 @@
 # From @gocardless - Updated for Big Sur
 # https://github.com/gocardless/CIS-for-macOS-BigSur-CP
 #
-# Updated: 2.23.2022 @ Robjschroeder
+# Updated: 2.26.2022 @ Robjschroeder
 
 # Security Reporting - List Risks
 
