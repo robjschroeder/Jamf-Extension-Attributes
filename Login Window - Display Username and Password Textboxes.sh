@@ -1,5 +1,11 @@
 #!/bin/sh
-desiredValue="EditFromTemplate_Desired_Value_-_Example:_true"
+
+# Returns if login window is using Name & Password
+# Setting must be enforced via managed preference
+#
+# Updated: 2.26.2022 @ Robjschroeder
+
+desiredValue="true"
 
 appDomain="com.apple.loginwindow"
 keyName="SHOWFULLNAME"
