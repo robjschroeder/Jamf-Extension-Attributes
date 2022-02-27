@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Returns list of O365 logons
+#
+# Updated: 2.26.2022 @ Robjschroeder
+
 # Functions
 function DetectO365Logon {
 	# creates a list of local usernames with UIDs above 500 (not hidden)
