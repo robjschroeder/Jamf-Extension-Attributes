@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Returns the latest OS supported on a computer
+# Returns tversion of Microsoft Auto Updater
 #
 # Checked: 2.26.2022 @ Robjschroeder
 
