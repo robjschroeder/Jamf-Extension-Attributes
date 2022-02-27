@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# Returns the latest OS supported on a computer
+#
+# Checked: 2.26.2022 @ Robjschroeder
+
 ##########################################################################################
 # A script to collect the version of Microsoft AutoUpdate that is currently installed.   #
 # If Microsoft AutoUpdate is not installed, "Not Installed" will be returned to the JSS. #
