@@ -1,4 +1,9 @@
 #!/bin/sh
+
+# Returns the update channel for Microsoft Office
+#
+# Updated: 2.26.2022 @ Robjschroeder
+
 if [ -d /Library/Application\ Support/Microsoft/MAU2.0/Microsoft\ AutoUpdate.app ]; then
     ChannelName=`python -c "from Foundation import CFPreferencesCopyAppValue; print CFPreferencesCopyAppValue('ChannelName', 'com.microsoft.autoupdate2')"`
     if [ "$ChannelName" == "External"]; then
