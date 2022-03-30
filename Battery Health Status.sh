@@ -21,7 +21,7 @@ model=$(system_profiler SPHardwareDataType | grep "Model Name:" | cut -d ' ' -f 
 
 # Get Battery Health status if computer is a MacBook
 if [[ "${model}" =~ "Book" ]]; then
-	#Determine battery health status
+	# Determine battery health status
 	result=$(system_profiler SPPowerDataType | grep "Condition" | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//')
 	echo "<result>${result}</result>"
 else
