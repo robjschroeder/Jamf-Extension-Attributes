@@ -12,7 +12,7 @@ lastLoggedInUser=$( defaults read /Library/Preferences/com.apple.loginwindow las
 # Get the password change date of that User 
 # lastPWChange="$(date -r "$(dscl . -readpl "/Users/$lastLoggedInUser" accountPolicyData passwordLastSetTime | awk -F ' |[.]' '{ print $2; exit }')")"
 lastPWChange=$( dscl . -readpl /Users/$lastLoggedInUser accountPolicyData passwordLastSetTime | awk '{print $2}' | sed -n "s/\([0-9]*\).*/\1/p" )
-#Format the time so we can use it as a Date/Time type in Jamf Pro EA
+#Format the time so we can use it as a Date data type in Jamf Pro EA
 formattedTime=$(date -jf %s $lastPWChange "+%F %T")
 
 
