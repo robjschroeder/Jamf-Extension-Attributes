@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <computer_extension_attribute>
     <id>8</id>
-    <name>Software Update Ring</name>
+    <name>Deployment Ring</name>
     <enabled>true</enabled>
-    <description>Used to move computers into different software update rings. </description>
+    <description>Used to move computers into different software deployment update rings. </description>
     <data_type>String</data_type>
     <input_type>
         <type>Pop-up Menu</type>
