@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <computer_extension_attribute>
-    <id>8</id>
     <name>Deployment Ring</name>
     <enabled>true</enabled>
     <description>Used to move computers into different software update rings. </description>
