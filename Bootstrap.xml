@@ -1,8 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <computer_extension_attribute>
-    <id>1</id>
     <name>Bootstrap</name>
-    <enabled>true</enabled>
     <description>Reports if the bootstrap token is escrowed to the Jamf Pro Server. </description>
     <data_type>String</data_type>
     <input_type>
