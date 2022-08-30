@@ -1,14 +1,18 @@
 #!/bin/bash
 
-# determine the inode birth date for / then convert seconds to "WeekdayName MonthName DD YYYY" format
+# Returns the orignial install date of macOS
+#
+# Created 08.30.2022 @robjschroeder
 
-#eval $(/usr/bin/stat -s /)
-#result=$(/bin/date -j -f "%s" "$st_birthtime" "+%a %b %d %Y")
-#echo "<result>$result</result>"
+##################################################
 
-# /usr/bin/find / -maxdepth 1 -inum 2 -exec stat -f %B {} \;
-# result=$(/bin/date -j -f "%s" "$st_birthtime" "+%Y%m%d")
+# Get original macOS Install Date in epoch time
+originDate=$(/usr/bin/stat -f "%B" /var/db/.AppleSetupDone)
 
+# Convert the epoch time into a formatted time
+formattedTime=$(date -jf %s $originDate "+%F %T")
 
-result=$(head -1 /var/log/install.log | awk -F " " '{print $1, $2}')
-echo "<result>$result</result>"
+# Print the results
+echo "<result>${formattedTime}</result>"
+
+exit 0
