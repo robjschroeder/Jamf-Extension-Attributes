@@ -1,15 +1,22 @@
 #!/bin/bash
 
-# Return the value set in Text1 field 
+# Return the value set in Text4 field 
 # of the Remote Desktop plist
 #
-# Updated: 2.23.2022 @ Robjschroeder
+# Updated: 11.21.2022 @ Robjschroeder
 #
 
 # Reports the value stored in Apple Remote Desktop Field 4
 
-if [ -f "/Library/Preferences/com.apple.RemoteDesktop.plist" ]; then
-echo "<result>`/usr/bin/defaults read /Library/Preferences/com.apple.RemoteDesktop Text4`</result>"
+path="/Library/Preferences"
+domainPlist="com.apple.RemoteDesktop.plist"
+key="Text4"
+defaultsRead="/usr/bin/defaults read $path/$domainPlist $key"
+
+if ($defaultsRead) > /dev/null 2>&1; then
+	RESULT=$($defaultsRead)
+else
+	RESULT="Field does not exist"
 fi
 
-exit 0
+echo "<result>$RESULT</result>"
